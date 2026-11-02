@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kane | Portfolio & Gallery Showcase</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Styling Font Gilroy & Fallback Geometric Sans */
+    body, h1, h2, h3, p, span, button, a, div {
+      font-family: 'Gilroy', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+    }
+
+    /* Background dengan Efek Blur ala iOS Liquid Glass */
+    body {
+      background-color: #0b0f19;
+      color: #ffffff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      filter: blur(14px) brightness(0.65);
+      transform: scale(1.05);
+      z-index: -1;
+    }
+
+    /* iOS Style Liquid Glassmorphism Card dengan Teks Lebih Jelas */
+    .glass-card {
+      background: rgba(20, 20, 30, 0.45);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 
+        0 8px 32px 0 rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+    }
+
+    /* Tombol Close Liquid Glass iOS Style */
+    .glass-btn-ios {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-btn-ios:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: scale(1.05);
+    }
+    .glass-btn-ios:active {
+      transform: scale(0.95);
+    }
+
+    /* Ambient Background Light Orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.25;
+    }
+    .orb-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #6366f1; }
+    .orb-2 { bottom: -10%; right: -10%; width: 600px; height: 600px; background: #a855f7; }
+
+    /* Animasi CSS Native Safe-Fade */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-up {
+      animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Hover Zoom Effect */
+    .img-hover-zoom {
+      overflow: hidden;
+    }
+    .img-hover-zoom img {
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .img-hover-zoom:hover img {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="relative min-h-screen pb-20 font-medium">
+
+  <!-- Background Orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- Container Utama -->
+  <main class="relative z-10 max-w-4xl mx-auto px-4 pt-12">
+
+    <!-- 1. HERO & ABOUT ME SECTION -->
+    <section class="flex flex-col items-center text-center mb-16 animate-fade-up">
+      <!-- Avatar Profil (Mengambil file lokal profile.jpg) -->
+      <div class="relative mb-6">
+        <div class="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden p-1 bg-gradient-to-tr from-pink-500 to-purple-500 shadow-xl">
+          <img src="profile.jpg" alt="kane" class="w-full h-full object-cover rounded-full" onerror="this.src='https://picsum.photos/300/300?random=99'" />
+        </div>
+        <span class="absolute bottom-1 right-1 bg-emerald-500 border-2 border-slate-900 w-5 h-5 rounded-full" title="Online"></span>
+      </div>
+
+      <!-- Handle & Bio Ringkas -->
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-2 text-white drop-shadow-md">
+        kane
+      </h1>
+      <p class="text-slate-200 font-semibold max-w-md text-sm md:text-base leading-relaxed drop-shadow">
+        hanya orang biasa
+      </p>
+
+      <!-- About Me Details Card -->
+      <div class="glass-card mt-6 p-6 rounded-2xl max-w-xl text-left w-full border border-white/20 shadow-xl">
+        <h3 class="text-xs font-bold text-pink-400 uppercase tracking-wider mb-2">About Me</h3>
+        <p class="text-xs md:text-sm text-slate-100 font-semibold leading-relaxed drop-shadow">
+          tweak phone, tech, cyber, web, gaming, and others
+        </p>
+      </div>
+    </section>
+
+    <!-- 2. GALLERY SHOWCASE SECTION -->
+    <section class="mb-20 animate-fade-up">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-xl md:text-2xl font-bold text-white drop-shadow">gallery</h2>
+        </div>
+      </div>
+
+      <!-- Grid Galeri Utama -->
+      <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Card 1 -->
+        <div class="glass-card rounded-2xl overflow-hidden img-hover-zoom cursor-pointer group shadow-xl" onclick="openLightbox('img1.jpg', 'Cyber Aesthetic Workspace')">
+          <div class="h-52 overflow-hidden relative">
+            <img src="img1.jpg" alt="Showcase 1" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-base text-white mb-1 drop-shadow">Cyber Workspace</h3>
+            <p class="text-xs text-slate-200 font-medium">Dark mode glassmorphic UI setup & minimalism layout.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass-card rounded-2xl overflow-hidden img-hover-zoom cursor-pointer group shadow-xl" onclick="openLightbox('img2.jpg', 'Neon Night Simulation')">
+          <div class="h-52 overflow-hidden relative">
+            <img src="img2.jpg" alt="Showcase 2" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-base text-white mb-1 drop-shadow">Sim-Racing Precision</h3>
+            <p class="text-xs text-slate-200 font-medium">Telemetry tracking & high-speed endurance gameplay.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+          
+    <!-- 3. INFO SECTION -->
+    <section class="mb-20 animate-fade-up pt-8 mt-4">
+      <div class="mb-6">
+        <h2 class="text-xl md:text-2xlwhite drop-shadow">Information</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Hardware Specs Card -->
+        <div class="glass-card p-6 rounded-2xl shadow-xl">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-pink-500/20 flex items-center justify-center text-pink-400 border border-pink-500/30">
+              <i class="fa-solid fa-laptop text-lg"></i>
+            </div>
+            <h3 class="font-bold text-base text-white">Primary Hardware</h3>
+          </div>
+          <ul class="space-y-3 text-xs md:text-sm text-slate-100 font-medium">
+            <li class="flex justify-between border-b border-white/10 pb-2">
+              <span class="text-slate-300 font-medium">Device</span>
+              <span class="font-mono font-bold text-white">ASUS X441U</span>
+            </li>
+            <li class="flex justify-between border-b border-white/10 pb-2">
+              <span class="text-slate-300 font-medium">Memory</span>
+              <span class="font-mono font-bold text-white">8GB DDR4 RAM</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="text-slate-300 font-medium">OS Context</span>
+              <span class="font-mono font-bold text-white">Windows 11 Pro</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Project Focus Card -->
+        <div class="glass-card p-6 rounded-2xl shadow-xl">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 border border-purple-500/30">
+              <i class="fa-solid fa-code text-lg"></i>
+            </div>
+            <h3 class="font-bold text-base text-white">Focus</h3>
+          </div>
+          <ul class="space-y-3 text-xs md:text-sm text-slate-100 font-medium">
+            <li class="flex justify-between border-b border-white/10 pb-2">
+              <span class="text-slate-300 font-medium">Web Design</span>
+              <span class="font-bold text-white">Native HTML5 / CSS3 / JS</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="text-slate-300 font-medium">Deployment</span>
+              <span class="font-bold text-white">GitHub Pages</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. ACCOUNTS & SOCIAL LINKS HUB -->
+    <section class="animate-fade-up">
+      <div class="glass-card p-8 rounded-3xl text-center relative overflow-hidden shadow-2xl">
+        <h2 class="text-xl md:text-2xl font-bold mb-2 text-white drop-shadow">Connect With Me</h2>
+        <p class="text-xs md:text-sm text-slate-200 font-medium mb-6 max-w-md mx-auto">
+          Temukan aktivitas, stream, dan dukungan media sosial kane di platform berikut:
+        </p>
+
+        <!-- Social Buttons Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+          <a href="https://saweria.co/inefa" class="glass-card py-3.5 px-4 rounded-xl flex items-center justify-center gap-2.5 hover:bg-white/15 transition-all duration-300 group border border-pink-500/30 shadow-md">
+            <i class="fa-solid fa-heart text-pink-400 group-hover:scale-110 transition-transform"></i>
+            <span class="text-xs font-bold text-white">Saweria</span>
+          </a>
+           <a href="https://github.com/kane404-dotcom" class="glass-card py-3.5 px-4 rounded-xl flex items-center justify-center gap-2.5 hover:bg-white/15 transition-all duration-300 group border border-pink-400/30 shadow-md">
+            <i class="fa-solid fa-circle-dot text-pink-300 group-hover:scale-110 transition-transform"></i>
+            <span class="text-xs font-bold text-white">github</span>
+          </a>
+          <a href="https://www.youtube.com/@kane_dotcom" class="glass-card py-3.5 px-4 rounded-xl flex items-center justify-center gap-2.5 hover:bg-white/15 transition-all duration-300 group border border-red-500/30 shadow-md">
+            <i class="fa-brands fa-youtube text-red-400 group-hover:scale-110 transition-transform"></i>
+            <span class="text-xs font-bold text-white">YouTube</span>
+          </a>
+          <a href="https://www.tiktok.com/@yuka_7476?_r=1&_t=ZS-99m7r8nTD41%22" class="glass-card py-3.5 px-4 rounded-xl flex items-center justify-center gap-2.5 hover:bg-white/15 transition-all duration-300 group border border-cyan-500/30 shadow-md">
+            <i class="fa-brands fa-tiktok text-cyan-300 group-hover:scale-110 transition-transform"></i>
+            <span class="text-xs font-bold text-white">TikTok</span>
+          </a>
+          <a href="https://osu.ppy.sh/users/40575654" class="glass-card py-3.5 px-4 rounded-xl flex items-center justify-center gap-2.5 hover:bg-white/15 transition-all duration-300 group border border-pink-400/30 shadow-md">
+            <i class="fa-solid fa-circle-dot text-pink-300 group-hover:scale-110 transition-transform"></i>
+            <span class="text-xs font-bold text-white">osu!</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX POPUP CONTAINER -->
+  <div id="lightbox" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xl hidden opacity-0 transition-opacity duration-300 flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
+    
+    <div class="relative max-w-4xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
+      <!-- Tombol Close Liquid Glass iOS Style -->
+      <div class="w-full flex justify-end mb-3">
+        <button onclick="closeLightbox()" class="glass-btn-ios px-4 py-2 rounded-full text-white font-bold text-xs md:text-sm flex items-center gap-2 shadow-lg">
+          <i class="fa-solid fa-xmark text-sm"></i>
+          <span>Close</span>
+        </button>
+      </div>
+
+      <!-- Preview Gambar -->
+      <img id="lightbox-img" src="" alt="Preview" class="w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl border border-white/20" />
+      
+      <!-- Caption Gambar -->
+      <div class="glass-card mt-3 px-5 py-2.5 rounded-full border border-white/20 shadow-xl">
+        <p id="lightbox-caption" class="text-center text-white font-bold text-xs md:text-sm"></p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SCRIPT LIGHTBOX -->
+  <script>
+    function openLightbox(src, caption) {
+      const lightbox = document.getElementById("lightbox");
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox-caption").innerText = caption;
+      lightbox.classList.remove("hidden");
+      setTimeout(() => lightbox.classList.remove("opacity-0"), 10);
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById("lightbox");
+      lightbox.classList.add("opacity-0");
+      setTimeout(() => lightbox.classList.add("hidden"), 300);
+    }
+  </script>
+</body>
+</html>
